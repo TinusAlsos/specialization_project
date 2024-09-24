@@ -6,7 +6,7 @@ import numpy as np
 def basic_solver(
     battery: BatteryStorage,
     production_curve: np.array,
-    electricty_price_curve: np.array,
+    electricity_price_curve: np.array,
     dt: float,
     low_price_threshold: float,
     high_price_threshold: float,
@@ -16,7 +16,7 @@ def basic_solver(
     Args:
         battery (BatteryStorage): Battery storage object
         production_curve (np.array): Array of energy production values (MW)
-        electricty_price_curve (np.array): Array of electricity price values (£/MWh)
+        electricity_price_curve (np.array): Array of electricity price values (£/MWh)
         dt (float): Time step (hours)
         low_price_threshold (float): Low price threshold (£/MWh)
         high_price_threshold (float): High price threshold (£/MWh)"""
@@ -31,7 +31,7 @@ def basic_solver(
     for t in range(T):
         current_production = production_curve[t]
         # Check if the electricity price is below the low price threshold
-        if electricty_price_curve[t] < low_price_threshold:
+        if electricity_price_curve[t] < low_price_threshold:
             potential_energy_to_store = min(
                 battery.max_charge_rate_mw * dt, current_production
             )
@@ -42,7 +42,7 @@ def basic_solver(
                     + potential_energy_to_store * battery.charge_efficiency
                 )
         # Check if the electricity price is above the high price threshold
-        elif electricty_price_curve[t] > high_price_threshold:
+        elif electricity_price_curve[t] > high_price_threshold:
             potential_energy_to_sell = min(
                 battery.max_discharge_rate_mw * dt, battery_soc[t]
             )
@@ -165,3 +165,6 @@ if __name__ == "__main__":
         discharge_efficiency,
         soc,
     )
+    # Print the battery object
+    print(battery)
+    # Output: BatteryStorage(capacity_mwh=100, max_charge_rate_mw=10, max_discharge_rate_mw=10, charge_efficiency=0.95, discharge_efficiency=0.95, soc=0)

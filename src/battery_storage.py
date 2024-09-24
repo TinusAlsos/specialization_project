@@ -17,8 +17,24 @@ class BatteryStorage:
 
 if __name__ == "__main__":
     # Create a battery storage object
-    battery = BatteryStorage()
+
+    # Create a battery storage object
+    capacity_mwh = 100
+    max_charge_rate_mw = 10
+    max_discharge_rate_mw = 10
+    charge_efficiency = 0.95
+    discharge_efficiency = 0.95
+    soc = 0
+
+    battery = BatteryStorage(
+        capacity_mwh=capacity_mwh,
+        max_charge_rate_mw=max_charge_rate_mw,
+        max_discharge_rate_mw=max_discharge_rate_mw,
+        charge_efficiency=charge_efficiency,
+        discharge_efficiency=discharge_efficiency,
+        soc=soc,
+    )
 
     # Print the battery object
     print(battery)
-    # Output: BatteryStorage(capacity_mwh=100, max_charge_rate_mw=10, max_discharge_rate_mw=10, charge_efficiency=0.95, discharge_efficiency=0.95, soc=0)
+    battery.capacity_mwh
