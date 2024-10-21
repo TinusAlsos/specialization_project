@@ -1,4 +1,4 @@
-id,area,lat,lon,exists,comment
+node_id,area,lat,lon,exists,comment
 0,A2,5.4881350392732475,7.151893663724195,False,
 1,A2,8.579456176227568,8.472517387841254,False,
 2,A1,6.458941130666561,4.375872112626925,True,Acivte
